@@ -17,7 +17,7 @@ function sortList(list) {
 
 function getEmployees(list) {
   return Array.from(list.children).map((item) => ({
-    name: item.TextContent,
+    name: item.textContent,
     position: item.dataset.position,
     salary: Number(item.dataset.salary.replace(/\$/g, '').split(',').join('')),
     age: Number(item.dataset.age),
