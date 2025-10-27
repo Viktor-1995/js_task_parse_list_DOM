@@ -1,13 +1,16 @@
 'use strict';
 
 // write code here
+function formatNumber(num) {
+  return num.dataset.salary.replace(/\$/g, '').split(',').join('');
+}
 
 function sortList(list) {
   const items = Array.from(list.children);
 
   items.sort((a, b) => {
-    const first = a.dataset.salary.replace(/\$/g, '').split(',').join('');
-    const second = b.dataset.salary.replace(/\$/g, '').split(',').join('');
+    const first = formatNumber(a);
+    const second = formatNumber(b);
 
     return Number(second) - Number(first);
   });
@@ -17,7 +20,7 @@ function sortList(list) {
 
 function getEmployees(list) {
   return Array.from(list.children).map((item) => ({
-    name: item.textContent,
+    name: item.textContent.trim(),
     position: item.dataset.position,
     salary: Number(item.dataset.salary.replace(/\$/g, '').split(',').join('')),
     age: Number(item.dataset.age),
